@@ -19,7 +19,25 @@ const quiz = {
         question: "What does DOM stand for?",
         option1: "Direct Orientation Mode",
         answer: "Document Object Model",
-        option2: ""
+        option2: "Dominant Order Module"
+    },
+    q3: {
+        question: "What syntax is typicallt associated with arrays?",
+        option1: "<>",
+        option2: "{}",
+        answer: "[]"
+    },
+    q4: {
+        question: "Which built-in method is used to round a number down to the nearest whole?",
+        answer: "Math.floor()",
+        option1: "Math.random()",
+        option2: "Math.ceiling()"
+    },
+    q5:{
+        question: "In the array var groceries = ['apples', 'grapes', 'bread'], which item is set to index 1?",
+        option1: "apples",
+        answer: "grapes",
+        option2: "groceries"
     }
 }
 console.log(quiz.q1.answer);
