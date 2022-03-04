@@ -42,10 +42,12 @@ var userInitials = document.querySelector('#enter-initials');
 var answerBtn1 = document.querySelector('#option1');
 var answerBtn2 = document.querySelector('#option2');
 var answerBtn3 = document.querySelector('#option3');
-var optionsBtn = document.querySelector('.options')
+var optionsBtn = document.getElementsByClassName('.options')
 
 // Start button--on click the timer starts and the first question is presented
 initiateQuiz.addEventListener('click', beginQuiz);
+
+
 
 function beginQuiz() {
     // display question
@@ -61,34 +63,131 @@ function beginQuiz() {
     answerBtn3.innerHTML = quiz.q1.answer;
     answerBtn3.value = 'true';
 
+    
+    document.querySelectorAll('.options').forEach(indBtn => {
+        indBtn.addEventListener('click', event => {
+    
+            var usersAnswer = event.target.value
+            console.log('userAnswer', usersAnswer)
+            
+            answerQuestion2();
+        })
+      })
 
-    
-    
-    //  document.querySelector('#option1').addEventListener('click', answerQuestion2);
-    //  document.querySelector('#option2').addEventListener('click', answerQuestion2);
-    //  document.querySelector('#option3').addEventListener('click', answerQuestion2);
 }; 
 
-optionsBtn.addEventListener('click', function (event) {
-    var usersAnswer = event.target.value
-    console.log('userAnswer', usersAnswer)
-
-    if(usersAnswer.includes('true')){
-        answerQuestion2();
-    }else if(usersAnswer.includes('false')){
-        console.log('nope')
-     
-    }
-});
-
-// Cycle through questions
+// Question 2 Function
 
 function answerQuestion2() {
     promptQuestion.innerHTML = quiz.q2.question;
+
     answerBtn1.innerHTML = quiz.q2.option1;
+    answerBtn1.value = 'false';
+
     answerBtn2.innerHTML = quiz.q2.answer;
+    answerBtn2.value = 'true';
+
     answerBtn3.innerHTML = quiz.q2.option2;
-}
+    answerBtn3.value = 'false';
+
+
+    document.querySelectorAll('.options').forEach(indBtn => {
+        indBtn.addEventListener('click', event => {
+    
+            var usersAnswer = event.target.value
+            console.log('userAnswer', usersAnswer)
+            
+            answerQuestion3();
+        })
+      })
+
+};
+
+
+// Question 3 Function
+
+function answerQuestion3() {
+    promptQuestion.innerHTML = quiz.q3.question;
+
+    answerBtn1.innerHTML = quiz.q3.option1;
+    answerBtn1.value = 'false';
+
+    answerBtn2.innerHTML = quiz.q3.option2;
+    answerBtn2.value = 'false';
+
+    answerBtn3.innerHTML = quiz.q3.answer;
+    answerBtn3.value = 'true';
+
+
+    document.querySelectorAll('.options').forEach(indBtn => {
+        indBtn.addEventListener('click', event => {
+    
+            var usersAnswer = event.target.value
+            console.log('userAnswer', usersAnswer)
+            
+            answerQuestion4();
+        })
+      })
+
+};
+
+
+
+// Question 4 Function
+
+function answerQuestion4() {
+    promptQuestion.innerHTML = quiz.q4.question;
+
+    answerBtn1.innerHTML = quiz.q4.answer
+    answerBtn1.value = 'true';
+
+    answerBtn2.innerHTML = quiz.q4.option1;
+    answerBtn2.value = 'false';
+
+    answerBtn3.innerHTML = quiz.q4.option2;
+    answerBtn3.value = 'false';
+
+
+    document.querySelectorAll('.options').forEach(indBtn => {
+        indBtn.addEventListener('click', event => {
+    
+            var usersAnswer = event.target.value
+            console.log('userAnswer', usersAnswer)
+            
+            answerQuestion5();
+        })
+      })
+
+};
+
+
+// Question 5 Function
+
+function answerQuestion5() {
+    promptQuestion.innerHTML = quiz.q5.question;
+
+    answerBtn1.innerHTML = quiz.q5.option1
+    answerBtn1.value = 'false';
+
+    answerBtn2.innerHTML = quiz.q5.answer;
+    answerBtn2.value = 'true';
+
+    answerBtn3.innerHTML = quiz.q5.option2;
+    answerBtn3.value = 'false';
+
+
+    document.querySelectorAll('.options').forEach(indBtn => {
+        indBtn.addEventListener('click', event => {
+    
+            var usersAnswer = event.target.value
+            console.log('userAnswer', usersAnswer)
+            
+    
+        })
+      })
+
+};
+
 
 // After answer is selected, the next question is presented--Loop through questions until the end or timer is out
 
