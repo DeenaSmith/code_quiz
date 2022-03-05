@@ -51,6 +51,7 @@ var optionsBtn = document.getElementsByClassName('.options')
 var getResults = document.querySelector('#results');
 var usersAnswer;
 var userScore = 0;
+var nameSubmit = document.querySelector('#initialSubmit');
 
 // Start button--on click the timer starts and the first question is presented
 initiateQuiz.addEventListener('click', beginQuiz, setInterval);
@@ -61,12 +62,9 @@ document.querySelectorAll('.options').forEach(indBtn => {
 })
 
 function checkAnswerTimer(event){
-         console.log(event)
             usersAnswer = event.target.value
-            console.log(usersAnswer)
 
             var currentQuestion = event.target.getAttribute('data-question')
-            console.log(currentQuestion)
 
            
 
@@ -76,37 +74,48 @@ function checkAnswerTimer(event){
                 userScore += 3;
                 getResults.innerHTML = userScore
             }
-            // console.log(getResults)
 
+            if(startingSeconds <= 0) {
+    
             
+            } else {
+                if(currentQuestion === '1') {
+                    answerQuestion2()
+                } else if (currentQuestion === '2') {
+                    answerQuestion3()
+                } else if (currentQuestion === '3') {
+                    answerQuestion4()
+                } else if (currentQuestion === '4') {
+                    answerQuestion5()
+                } else if (currentQuestion === '5') {
+                    endGame()
+                };
+            }
 
-            if(currentQuestion === '1'){
-                answerQuestion2()
-            } else if (currentQuestion === '2') {
-                answerQuestion3()
-            } else if (currentQuestion === '3') {
-                answerQuestion4()
-            } else if (currentQuestion === '4') {
-                answerQuestion5()
-            };
- 
+
 }
 
+
+
+// Timer Countdown
+function timerStart() {
+
+        var seconds = startingSeconds % 1000;
+
+        beginTimer.innerHTML = seconds;
+        startingSeconds--;
+        startingSeconds = startingSeconds < 0 ? 0:startingSeconds;
+
+        if (startingSeconds <= 0) {
+            endGame()
+        }
+    };
 
 
 
 function beginQuiz() {
     setInterval(timerStart, 1000);
 
-    function timerStart() {
-
-        var seconds = startingSeconds % 1000;
-
-        // console.log('seconds', seconds)
-        beginTimer.innerHTML = seconds;
-        startingSeconds--;
-        startingSeconds = startingSeconds < 0 ? 0:startingSeconds;
-    };
 
     // display question
     promptQuestion.innerHTML = quiz.q1.question;
@@ -206,6 +215,30 @@ function answerQuestion5() {
     answerBtn3.value = 'false';
     answerBtn3.setAttribute('data-question', '5');
 
+};
+
+
+
+// End Of Game Function
+
+function endGame() {
+
+    startingSeconds = 0;
+
+    nameSubmit.addEventListener('click', captureUserInitials);
+
+    function captureUserInitials() {
+        var storedInitials = userInitials.value;
+        var finalScore = userScore;
+        
+        window.localStorage.setItem("initials", storedInitials);
+
+        document.querySelector('#hsUserInitials').innerHTML = storedInitials;
+        document.querySelector('#hsUserScore').innerHTML = finalScore;
+
+    }
+
+    
 };
 
 

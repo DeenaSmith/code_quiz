@@ -39,12 +39,21 @@
   <!-- Enter Initials -->
   <div>
     <form>
-      <input type="text" id="enter-initials">
-    </form>
+      <label for="lname">User Initials</label><br>
+      <input placeholder="Enter Initials Here" type="text" id="enter-initials" name="lname"><br><br>
+    </form> 
+
+    <button id="initialSubmit" value="Submit" >Submit Score</button>
+  
   </div>
 
   <div>
     <p id="results" value=""></p>
+    <h3>High Scores</h3>
+    <p>
+       <span id="hsUserInitials"></span>--
+       <span id="hsUserScore"></span>
+    </p>
   </div>
 
 	<script src="./script.js"></script>
