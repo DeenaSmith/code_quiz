@@ -63,8 +63,12 @@ document.querySelectorAll('.options').forEach(indBtn => {
 function checkAnswerTimer(event){
          console.log(event)
             usersAnswer = event.target.value
-
             console.log(usersAnswer)
+
+            var currentQuestion = event.target.getAttribute('data-question')
+            console.log(currentQuestion)
+
+           
 
             if(usersAnswer === 'false') {
                 startingSeconds -= 5;
@@ -73,11 +77,22 @@ function checkAnswerTimer(event){
                 getResults.innerHTML = userScore
             }
             // console.log(getResults)
+
             
 
-            answerQuestion2();
+            if(currentQuestion === '1'){
+                answerQuestion2()
+            } else if (currentQuestion === '2') {
+                answerQuestion3()
+            } else if (currentQuestion === '3') {
+                answerQuestion4()
+            } else if (currentQuestion === '4') {
+                answerQuestion5()
+            };
  
 }
+
+
 
 
 function beginQuiz() {
@@ -99,12 +114,15 @@ function beginQuiz() {
     // display questions
     answerBtn1.innerHTML = quiz.q1.option1
     answerBtn1.value = 'false';
+    answerBtn1.setAttribute('data-question', '1');
 
     answerBtn2.innerHTML = quiz.q1.option2;
     answerBtn2.value = 'false';
+    answerBtn2.setAttribute('data-question', '1');
 
     answerBtn3.innerHTML = quiz.q1.answer;
     answerBtn3.value = 'true';
+    answerBtn3.setAttribute('data-question', '1');
         
 
 }; 
@@ -116,12 +134,15 @@ function answerQuestion2() {
 
     answerBtn1.innerHTML = quiz.q2.option1;
     answerBtn1.value = 'false';
+    answerBtn1.setAttribute('data-question', '2');
 
     answerBtn2.innerHTML = quiz.q2.answer;
     answerBtn2.value = 'true';
+    answerBtn2.setAttribute('data-question', '2');
 
     answerBtn3.innerHTML = quiz.q2.option2;
     answerBtn3.value = 'false';
+    answerBtn3.setAttribute('data-question', '2');
 
 
 };
@@ -134,12 +155,15 @@ function answerQuestion3() {
 
     answerBtn1.innerHTML = quiz.q3.option1;
     answerBtn1.value = 'false';
+    answerBtn1.setAttribute('data-question', '3');
 
     answerBtn2.innerHTML = quiz.q3.option2;
     answerBtn2.value = 'false';
+    answerBtn2.setAttribute('data-question', '3');
 
     answerBtn3.innerHTML = quiz.q3.answer;
     answerBtn3.value = 'true';
+    answerBtn3.setAttribute('data-question', '3');
 
 };
 
@@ -152,12 +176,15 @@ function answerQuestion4() {
 
     answerBtn1.innerHTML = quiz.q4.answer
     answerBtn1.value = 'true';
+    answerBtn1.setAttribute('data-question', '4');
 
     answerBtn2.innerHTML = quiz.q4.option1;
     answerBtn2.value = 'false';
+    answerBtn2.setAttribute('data-question', '4');
 
     answerBtn3.innerHTML = quiz.q4.option2;
     answerBtn3.value = 'false';
+    answerBtn3.setAttribute('data-question', '4');
 
 };
 
@@ -169,12 +196,15 @@ function answerQuestion5() {
 
     answerBtn1.innerHTML = quiz.q5.option1
     answerBtn1.value = 'false';
+    answerBtn1.setAttribute('data-question', '5');
 
     answerBtn2.innerHTML = quiz.q5.answer;
     answerBtn2.value = 'true';
+    answerBtn2.setAttribute('data-question', '5');
 
     answerBtn3.innerHTML = quiz.q5.option2;
     answerBtn3.value = 'false';
+    answerBtn3.setAttribute('data-question', '5');
 
 };
 
